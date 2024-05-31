@@ -26,6 +26,12 @@ const AllBlogs = () => {
         setSearch(text);
     };
 
+    const handleReset = () => {
+        setFilter('');
+        setSearch('');
+        document.querySelector('input[name="search"]').value = '';
+    };
+
     return (
         <div className="container mx-auto">
             <div className="flex items-center mb-4">
@@ -42,7 +48,7 @@ const AllBlogs = () => {
                     <option value="Breakfast">Breakfast</option>
                     {/* Add more options for each category */}
                 </select>
-                <form onSubmit={handleSearch} className="flex">
+                <form onSubmit={handleSearch} className="flex mr-4">
                     <input
                         type="text"
                         name="search"
@@ -56,6 +62,12 @@ const AllBlogs = () => {
                         Search
                     </button>
                 </form>
+                <button
+                    onClick={handleReset}
+                    className="p-2 bg-gray-500 text-white text-base rounded shadow"
+                >
+                    Reset
+                </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -11,6 +11,8 @@ import FoodDetails from "../Pages/FoodDetails";
 import Update from "../Pages/Update";
 import PrivateRoute from "../Pages/PrivateRoute";
 import Feature from "../Pages/Feature";
+import WishList from "../Pages/WishList";
+import AllCard from "../Pages/AllCard";
 
 
 const router = createBrowserRouter([
@@ -59,9 +61,22 @@ const router = createBrowserRouter([
         {
         
                 path: '/Featured',
-                element: <Feature></Feature>,
+             element: <Feature></Feature>,
                 loader: () => fetch('http://localhost:5000/blogs')
             
+        },
+        {
+            path: '/wishlist',
+            element: <PrivateRoute><WishList></WishList></PrivateRoute>,
+            // loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+      
+
+        },
+        {
+         path: '/card/id',
+         element: <AllCard></AllCard>,
+         loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+      
         }
        
       ]
