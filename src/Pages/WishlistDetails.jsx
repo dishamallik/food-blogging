@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
-import { RiChat4Line } from "react-icons/ri";
 import { Link, useLoaderData } from "react-router-dom";
 import useAuth from "../hook/useAuth";
-
-import Comment from "./Comment";
+import { useEffect, useState } from "react";
+import { RiChat4Line } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
+import Comment from "./Comment";
 
 
-const FoodDetails = () => {
-   
-  const blog = useLoaderData(); // Use singular for a single blog post
-  const { user } = useAuth();
+const WishlistDetails = () => {
+    const wishlists = useLoaderData();
+    
+    const { user } = useAuth();
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [comment, setComment] = useState("");
 
@@ -24,13 +23,13 @@ const FoodDetails = () => {
     }
   }, [user]);
 
-  const isAuthor = user && user.email === blog.userEmail; // Compare user email with blog author email
+  const isAuthor = user && user.email === wishlists.userEmail; // Compare user email with wishlists author email
 
   const handleSubmitComment = () => {
     if (!comment.trim()) return;
   
     const commentData = {
-      blogId: blog._id, // Use blog._id directly
+      wishlistsId: wishlists._id, // Use wishlists._id directly
       userName: userName,
       userProfilePic: userProfilePic,
       commentText: comment,
@@ -59,18 +58,19 @@ const FoodDetails = () => {
     setShowCommentBox(false);
   };
   
-  return (
-    <div>
+    return (
+        <div>
+             <div>
       <div className="container mx-auto py-8">
-        {/* Blog Details */}
+        {/* wishlists Details */}
         <div className="mb-10 p-8 bg-teal-50 rounded-xl shadow-md w-full max-w-3xl mx-auto relative">
-          <h2 className="text-4xl font-semibold mb-6 text-rose-700 font-serif">{blog.title}</h2>
-          <img src={blog.image} alt="Blog" className="mb-6 w-full h-64 object-cover rounded-xl lg:w-80 lg:h-80" />
-          <p className="text-gray-600 mb-6 text-lg font-light font-sans">{blog.shortDescription}</p>
-          <p className="text-gray-700 leading-relaxed text-base font-normal font-serif">{blog.longDescription}</p>
+          <h2 className="text-4xl font-semibold mb-6 text-rose-700 font-serif">{wishlists.title}</h2>
+          <img src={wishlists.image} alt="wishlists" className="mb-6 w-full h-64 object-cover rounded-xl lg:w-80 lg:h-80" />
+          <p className="text-gray-600 mb-6 text-lg font-light font-sans">{wishlists.shortDescription}</p>
+          <p className="text-gray-700 leading-relaxed text-base font-normal font-serif">{wishlists.longDescription}</p>
           
           {(isAuthor || !user) && (
-            <Link to={`/update/${blog._id}`}><button className="bg-yellow-500 text-white px-4 py-2 rounded-md mt-5">Update</button></Link>
+            <Link to={`/update/${wishlists._id}`}><button className="bg-yellow-500 text-white px-4 py-2 rounded-md mt-5">Update</button></Link>
           )}
           
           {!isAuthor && user && (
@@ -84,10 +84,10 @@ const FoodDetails = () => {
           )}
         </div>
 
-        {/* Comment Section */}
+        
         <div className="mb-8">
           {isAuthor && (
-            <p className="text-red-500">You cannot comment on your own blog.</p>
+            <p className="text-red-500">You cannot comment on your own wishlists.</p>
           )}
           {showCommentBox && !isAuthor && (
             <div className="flex flex-col">
@@ -127,7 +127,8 @@ const FoodDetails = () => {
         <Comment></Comment>
       </div>
     </div>
-  );
+        </div>
+    );
 };
 
-export default FoodDetails;
+export default WishlistDetails;

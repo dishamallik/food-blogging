@@ -13,6 +13,7 @@ import PrivateRoute from "../Pages/PrivateRoute";
 import Feature from "../Pages/Feature";
 import WishList from "../Pages/WishList";
 import AllCard from "../Pages/AllCard";
+import WishlistDetails from "../Pages/WishlistDetails";
 
 
 const router = createBrowserRouter([
@@ -77,7 +78,14 @@ const router = createBrowserRouter([
          element: <AllCard></AllCard>,
          loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
       
-        }
+        },
+        {
+            
+            path:'/wishlist/:id',
+           element:<WishlistDetails></WishlistDetails>,
+            loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+         
+    },
        
       ]
     },

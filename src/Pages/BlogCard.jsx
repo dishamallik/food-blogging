@@ -65,9 +65,9 @@ const BlogCard = ({blog}) => {
             onClick={handleWishlist}
             className="btn bg-rose-400 hover:bg-red-600 text-white font-bold py-1 px-2 rounded"
           >
-            <BiSolidBookmarkHeart />
+           wishlist <BiSolidBookmarkHeart />
           </button>
-          <Link to={`/blogs/${_id}`}>
+          <Link to={`/wishlist/${_id}`}>
             <button className="btn btn-outline bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded">
               Details <FaArrowRight className="ml-1" />
             </button>

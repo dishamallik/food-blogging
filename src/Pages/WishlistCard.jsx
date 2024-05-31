@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 
 const WishlistCard = ({ wishlist }) => {
@@ -21,7 +21,7 @@ const WishlistCard = ({ wishlist }) => {
         <h3 className="text-lg font-semibold">{title}</h3>
         <p className="text-gray-500">{shortDescription}</p>
         <p className="text-sm text-gray-400 mt-2">Category: {category}</p>
-        <Link to={`/blogs/${_id}`} className="block mt-4 text-center text-blue-500 hover:text-blue-700">
+        <Link to={`/wishlist/${_id}`} className="block mt-4 text-center text-blue-500 hover:text-blue-700">
           Details
         </Link>
       </div>
