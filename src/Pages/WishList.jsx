@@ -1,34 +1,46 @@
-import { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import useAuth from "../hook/useAuth";
 import WishlistCard from "./WishlistCard";
-
 
 const WishList = () => {
     const { user } = useAuth();
     const [wishlists, setWishlist] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (user?.email) {
-            fetch(`http://localhost:5000/wishlist/?serEmail=${user.email}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log('Fetched wishlist data:', data); 
+        const fetchWishlist = async () => {
+            try {
+                if (user?.email) {
+                    const response = await fetch(`http://localhost:5000/wishlist/?userEmail=${user.email}`);
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch wishlist data');
+                    }
+                    const data = await response.json();
                     setWishlist(data);
-                })
-                .catch((error) => {
-                    console.error('Error fetching data:', error);
-                });
-        }
+                }
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchWishlist();
     }, [user]);
-    
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>;
+    }
 
     return (
         <div>
-           
-           
             {wishlists.length > 0 ? (
                 <div className="grid grid-cols-3 gap-4">
-                    {/* Render wishlist items */}
                     {wishlists.map((wishlist) => (
                         <WishlistCard key={wishlist._id} wishlist={wishlist} />
                     ))}
