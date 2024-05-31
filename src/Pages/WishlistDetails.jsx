@@ -84,7 +84,7 @@ const WishlistDetails = () => {
           )}
         </div>
 
-        
+        {/* Comment Section */}
         <div className="mb-8">
           {isAuthor && (
             <p className="text-red-500">You cannot comment on your own wishlists.</p>
