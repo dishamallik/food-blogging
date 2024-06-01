@@ -42,20 +42,20 @@ const router = createBrowserRouter([
         {
             path: '/all',
             element: <AllBlogs></AllBlogs>,
-            // loader: () => fetch('http://localhost:5000/blogs')
+            // loader: () => fetch('https://food-blogging-server.vercel.app/blogs')
         },
         {
             
                 path:'/blogs/:id',
                element: <FoodDetails></FoodDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({params}) => fetch(`https://food-blogging-server.vercel.app/blogs/${params.id}`)
              
         },
         {
             
                 path:"/update/:id",
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({params}) => fetch(`https://food-blogging-server.vercel.app/blogs/${params.id}`)
       
               
         },
@@ -63,27 +63,27 @@ const router = createBrowserRouter([
         
                 path: '/Featured',
              element: <Feature></Feature>,
-                loader: () => fetch('http://localhost:5000/blogs')
+                loader: () => fetch('https://food-blogging-server.vercel.app/blogs')
             
         },
         {
             path: '/wishlist',
             element: <PrivateRoute><WishList></WishList></PrivateRoute>,
-            // loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+            // loader: ({params}) => fetch(`https://food-blogging-server.vercel.app/blogs/${params.id}`)
       
 
         },
         {
          path: '/card/id',
          element: <AllCard></AllCard>,
-         loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+         loader: ({params}) => fetch(`https://food-blogging-server.vercel.app/blogs/${params.id}`)
       
         },
         {
             
             path:'/wishlist/:id',
            element:<WishlistDetails></WishlistDetails>,
-            loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+            loader: ({params}) => fetch(`https://food-blogging-server.vercel.app/wishlist/${params.id}`)
          
     },
        

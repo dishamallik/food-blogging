@@ -6,7 +6,7 @@ const Comment = () => {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/comment')
+        fetch('https://food-blogging-server.vercel.app/comment')
             .then(res => res.json())
             .then(data => setComments(data));
     }, []);

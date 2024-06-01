@@ -15,7 +15,7 @@ const fetchUserData = async (user) => {
 };
 
 const postBlog = async (newBlog) => {
-  const response = await axios.post('http://localhost:5000/blogs', newBlog, {
+  const response = await axios.post('https://food-blogging-server.vercel.app/blogs', newBlog, {
     headers: {
       'Content-Type': 'application/json'
     }

@@ -35,7 +35,7 @@ const WishlistDetails = () => {
       commentText: comment,
     };
   
-    fetch('http://localhost:5000/comment', {
+    fetch('https://food-blogging-server.vercel.app/comment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const WishlistDetails = () => {
     });
   
     
-    console.log(commentData);
+    // console.log(commentData);
   
     
     setComment("");

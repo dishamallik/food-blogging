@@ -12,7 +12,7 @@ const WishList = () => {
         const fetchWishlist = async () => {
             try {
                 if (user?.email) {
-                    const response = await fetch(`http://localhost:5000/wishlist/?userEmail=${user.email}`);
+                    const response = await fetch(`https://food-blogging-server.vercel.app/wishlist/?userEmail=${user.email}`);
                     if (!response.ok) {
                         throw new Error('Failed to fetch wishlist data');
                     }

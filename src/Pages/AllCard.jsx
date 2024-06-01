@@ -24,7 +24,7 @@ const AllCard = ({ blog }) => {
       category,
     };
 
-    fetch('http://localhost:5000/wishlist', {
+    fetch('https://food-blogging-server.vercel.app/wishlist', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

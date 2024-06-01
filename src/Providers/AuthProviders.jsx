@@ -14,9 +14,9 @@ const goggleProvider = new GoogleAuthProvider();
 
 const AuthProviders = ({children}) => {
     const [user, setUser] = useState(null);
-    console.log(user);
+    // console.log(user);
  const [loading, setLoading] = useState(true);
-   console.log(loading);
+//    console.log(loading);
     
 // create user
 const createUser = ( email, password) => {
@@ -61,7 +61,7 @@ const logout = () =>{
 // observer
 useEffect(() => {
     const unsubscribe =  onAuthStateChanged(auth, user => {
-          console.log(user);
+        //   console.log(user);
           setUser(user);
           setLoading(false);
         });

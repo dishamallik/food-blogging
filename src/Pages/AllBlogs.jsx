@@ -7,7 +7,7 @@ const AllBlogs = () => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs?search=${search}`)
+        fetch(`https://food-blogging-server.vercel.app/blogs?search=${search}`)
             .then(res => res.json())
             .then(data => setBlogs(data));
     }, [search]);
