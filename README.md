@@ -2,7 +2,7 @@
 
 Welcome to Crave, your ultimate destination for mouth-watering food blogs. Discover a wide array of recipes, culinary tips, and food-related stories curated by our passionate community.
 
-[Live Site URL]
+[Live Site URL] https://food-blogging-ebb6d.web.app/
 
 ## Features
 
